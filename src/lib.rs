@@ -570,6 +570,7 @@ mod tests {
         assert!(slab.replace(tok, 6).is_some());
         assert!(slab.replace(tok+1, 555).is_none());
         assert_eq!(slab[tok], 6);
+        assert_eq!(slab.count(), 2);
     }
 
     #[test]
@@ -581,6 +582,7 @@ mod tests {
         assert!(slab.replace(tok, 8).is_some());
         assert!(slab.replace(tok+1, 555).is_none());
         assert_eq!(slab[tok], 8);
+        assert_eq!(slab.count(), 2);
     }
 
     #[test]
