@@ -573,6 +573,17 @@ mod tests {
     }
 
     #[test]
+    fn test_replace_again() {
+        let mut slab = Slab::<usize, usize>::new(16);
+        let tok = slab.insert(5).unwrap();
+        assert!(slab.replace(tok, 6).is_some());
+        assert!(slab.replace(tok, 7).is_some());
+        assert!(slab.replace(tok, 8).is_some());
+        assert!(slab.replace(tok+1, 555).is_none());
+        assert_eq!(slab[tok], 8);
+    }
+
+    #[test]
     fn test_replace_with() {
         let mut slab = Slab::<u32, usize>::new(16);
         let tok = slab.insert(5u32).unwrap();
